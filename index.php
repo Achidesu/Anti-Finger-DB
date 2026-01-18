@@ -22,11 +22,11 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card medical-card border-0 shadow-lg" style="width: 400px;">
             
-            <div class="card-header medical-header text-white text-center py-4">
+            <div class="card-header medical-header text-center py-4">
                 <div class="mb-3">
                     <i class="fa-solid fa-user-doctor fa-3x"></i>
                 </div>
-                <h4 class="mb-0 fw-bold">Login Portal</h4>
+                <h4 class="mb-0 fw-bold" id="Login-title">Login Portal</h4>
                 <small class="opacity-75">Anti Finger Database System</small>
             </div>
 
