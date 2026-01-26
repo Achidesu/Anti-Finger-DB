@@ -4,13 +4,12 @@
         $_SESSION['error'] = "Please login!";
         header("location: index.php");
     }
-   $ch = curl_init();
-   curl_setopt($ch, CURLOPT_URL, "https://api.sheetbest.com/sheets/eb063465-9a3d-49c9-9922-76fde01f3c24"); 
-   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-   $output = curl_exec($ch);
-   curl_close($ch); 
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://api.sheetbest.com/sheets/eb063465-9a3d-49c9-9922-76fde01f3c24"); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $output = curl_exec($ch);
 
-   $result = json_decode($output);
+    $result = json_decode($output);
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +39,14 @@
                             <h2 class="mb-0 fw-bold"><i class="fa-solid fa-notes-medical me-2"></i> Anti Finger Database</h2>
                             <small class="opacity-75">Medical Record System</small>
                         </div>
-                        <div class="badge bg-white text-primary rounded-pill px-3 py-2">
-                            <i class="fa-solid fa-server me-1"></i> Online
+                        <div>
+                            <a href="export_to_pdf.php" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-bold shadow-sm">
+                                <i class="fa-solid fa-file-export me-1"></i> Export to PDF
+                            </a>
+                            <a href="logout.php" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold shadow-sm">
+                                <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
+                            </a>
                         </div>
-                        <a href="logout.php" class="btn btn-light btn-sm rounded-pill px-4 fw-bold text-primary shadow-sm">
-                            <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
-                        </a>
                     </div>
 
                     <div class="card-body p-0">
@@ -63,6 +64,7 @@
                                 <tbody>
                                     <?php if(!empty($result)) : ?>
                                         <?php foreach($result as $key => $value): ?>
+                                            <?php if ($value->id == 0) {continue;}?>
                                         <tr>
                                             <td class="ps-4 fw-semibold text-muted">#<?php echo $value->id; ?></td>
                                             <td>
