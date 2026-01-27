@@ -9,6 +9,7 @@ session_start();
 
 require 'vendor/autoload.php';
 
+use Dompdf\Adapter\GD;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
